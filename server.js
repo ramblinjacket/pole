@@ -1,8 +1,14 @@
 let Colley = require('colley-rankings');
-let C = Colley(5) // Create a 5-team league
+let C = Colley(4) // Create a 5-team league
 
-let winner_id = 4;
-let loser_id = 2;
-C.addGame(winner_id, loser_id);
+let matchups = [[3,1],[0,1],[2,0],[3,0],[3,2],[0,2],[2,0],[3,0]]
 
-console.log(C.solve());
+matchups.forEach(game => {
+	let winner_id = game[0];
+	let loser_id = game[1];
+	C.addGame(winner_id, loser_id);		
+});
+
+unsortedRankings = C.solve().array
+
+console.log(unsortedRankings);
